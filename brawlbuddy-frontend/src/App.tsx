@@ -1,79 +1,106 @@
-// TODO: Implement routing and main layout
-
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { playerApi } from './services/api';
 
-// Try multiple backend URLs in order of preference
-const API_URLS = [
-  'https://localhost:5001',
-  'http://localhost:5000', 
-  'http://localhost:5001'
-];
-
-interface TestResponse {
-  message: string;
-  timestamp: string;
-}
+// Import pages
+import Home from './pages/Home';
+import PlayerProfile from './pages/PlayerProfile';
+import TierListPage from './pages/TierListPage';
+import BattleLogPage from './pages/BattleLogPage';
 
 function App() {
-  const [message, setMessage] = useState('Connecting to backend...');
-  const [backendStatus, setBackendStatus] = useState('pending');
-  const [connectedUrl, setConnectedUrl] = useState('');
+  const [backendStatus, setBackendStatus] = useState<'pending' | 'success' | 'error'>('pending');
 
   useEffect(() => {
-    const tryConnectToBackend = async () => {
-      for (const apiUrl of API_URLS) {
-        try {
-          console.log(`Trying to connect to: ${apiUrl}`);
-          const response = await axios.get<TestResponse>(`${apiUrl}/api/player/test`, {
-            timeout: 3000 // 3 second timeout
-          });
-          
-          setMessage(response.data.message);
-          setBackendStatus('success');
-          setConnectedUrl(apiUrl);
-          console.log(`Successfully connected to: ${apiUrl}`);
-          return; // Exit loop on success
-        } catch (error) {
-          console.log(`Failed to connect to ${apiUrl}:`, error);
-        }
+    // Test backend connection on app load
+    const testBackend = async () => {
+      try {
+        await playerApi.test();
+        setBackendStatus('success');
+      } catch (error) {
+        setBackendStatus('error');
+        console.error('Backend connection failed:', error);
       }
-      
-      // If we get here, all URLs failed
-      setMessage('Failed to connect to backend. Please start the API server.');
-      setBackendStatus('error');
     };
 
-    tryConnectToBackend();
+    testBackend();
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center font-sans p-4">
-      <header className="text-center">
-        <h1 className="text-5xl font-bold mb-4">
-          Brawl Buddy
-        </h1>
-        <p className="text-lg text-gray-400 mb-8">
-          Your ultimate Brawl Stars companion.
-        </p>
-        <div className="status-card bg-gray-800 p-6 rounded-lg shadow-lg max-w-md mx-auto">
-          <h2 className="text-2xl font-semibold mb-3">Application Status</h2>          <div className="flex items-center justify-center">
-            <span className={`h-4 w-4 rounded-full mr-3 ${
-              backendStatus === 'success' ? 'bg-green-500' : backendStatus === 'error' ? 'bg-red-500' : 'bg-yellow-500 animate-pulse'
-            }`}></span>
-            <p>
-              Backend Status: <span className="font-semibold ml-1">{message}</span>
-            </p>
+    <Router>
+      <div className="min-h-screen bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900">
+        {/* Navigation Header */}
+        <nav className="bg-black/20 backdrop-blur-sm border-b border-white/10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between h-16">
+              <div className="flex items-center">
+                <Link to="/" className="text-white text-xl font-bold">
+                  🥊 Brawl Buddy
+                </Link>
+              </div>
+              <div className="flex space-x-4">
+                <Link 
+                  to="/" 
+                  className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                >
+                  Home
+                </Link>
+                <Link 
+                  to="/player" 
+                  className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                >
+                  Player Search
+                </Link>
+                <Link 
+                  to="/tierlist" 
+                  className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                >
+                  Tier Lists
+                </Link>
+                <Link 
+                  to="/battles" 
+                  className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                >
+                  Battle Log
+                </Link>
+              </div>
+              
+              {/* Backend Status Indicator */}
+              <div className="flex items-center">
+                <div className={`w-2 h-2 rounded-full mr-2 ${
+                  backendStatus === 'success' ? 'bg-green-400' : 
+                  backendStatus === 'error' ? 'bg-red-400' : 'bg-yellow-400'
+                }`}></div>
+                <span className="text-xs text-gray-400">
+                  {backendStatus === 'success' ? 'API Connected' : 
+                   backendStatus === 'error' ? 'API Offline' : 'Connecting...'}
+                </span>
+              </div>
+            </div>
           </div>
-          {connectedUrl && (
-            <p className="text-sm text-gray-400 mt-2">
-              Connected to: {connectedUrl}
-            </p>
+        </nav>
+
+        {/* Main Content */}
+        <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+          {backendStatus === 'error' && (
+            <div className="bg-red-900/50 border border-red-400 text-red-100 px-4 py-3 rounded mb-6">
+              <strong className="font-bold">Backend Offline!</strong>
+              <span className="block sm:inline"> Make sure the .NET API is running on localhost:5000</span>
+            </div>
           )}
-        </div>
-      </header>
-    </div>
-  )
+          
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/player" element={<PlayerProfile />} />
+            <Route path="/player/:tag" element={<PlayerProfile />} />
+            <Route path="/tierlist" element={<TierListPage />} />
+            <Route path="/battles" element={<BattleLogPage />} />
+            <Route path="/battles/:tag" element={<BattleLogPage />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
+  );
 }
 
-export default App
+export default App;

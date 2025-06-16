@@ -1,7 +1,39 @@
-// TODO: Define the BattleLog type based on API response
-export type BattleLog = {
-    id: string; // Or whatever unique identifier it has
-    mode: string;
-    result: 'victory' | 'defeat';
-    // Add other properties here
-}; 
+// BattleLog types based on backend API models
+export interface BattleLog {
+  items: BattleLogItem[];
+}
+
+export interface BattleLogItem {
+  battleTime: string;
+  event: BattleEvent;
+  battle: Battle;
+}
+
+export interface BattleEvent {
+  id: number;
+  mode: string;
+  map: string;
+}
+
+export interface Battle {
+  mode: string;
+  type: string;
+  result: string;
+  duration: number;
+  trophyChange: number;
+  starTokensGained: number;
+  teams: BattlePlayer[][];
+}
+
+export interface BattlePlayer {
+  tag: string;
+  name: string;
+  brawler: BattleBrawler;
+}
+
+export interface BattleBrawler {
+  id: number;
+  name: string;
+  power: number;
+  trophies: number;
+}
