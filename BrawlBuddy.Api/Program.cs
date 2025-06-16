@@ -1,9 +1,19 @@
-// TODO: Implement API endpoints and services.
+using BrawlBuddy.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
+
+// Add memory cache
+builder.Services.AddMemoryCache();
+
+// Add HTTP client
+builder.Services.AddHttpClient();
+
+// Register custom services
+builder.Services.AddScoped<ICacheService, CacheService>();
+builder.Services.AddScoped<BrawlApiService>();
 
 // Add CORS
 builder.Services.AddCors(options =>

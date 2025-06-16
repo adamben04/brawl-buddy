@@ -25,7 +25,7 @@ Write-Host ""
 Write-Host "Checking ports..." -ForegroundColor Yellow
 $port5000 = netstat -ano | Select-String ":5000"
 $port5001 = netstat -ano | Select-String ":5001"
-$port5174 = netstat -ano | Select-String ":5174"
+$port5173 = netstat -ano | Select-String ":5173"
 
 if ($port5000) {
     Write-Host "✅ Port 5000 is in use (Backend HTTP)" -ForegroundColor Green
@@ -39,10 +39,10 @@ if ($port5001) {
     Write-Host "❌ Port 5001 is not in use" -ForegroundColor Red
 }
 
-if ($port5174) {
-    Write-Host "✅ Port 5174 is in use (Frontend)" -ForegroundColor Green
+if ($port5173) {
+    Write-Host "✅ Port 5173 is in use (Frontend)" -ForegroundColor Green
 } else {
-    Write-Host "❌ Port 5174 is not in use" -ForegroundColor Red
+    Write-Host "❌ Port 5173 is not in use" -ForegroundColor Red
 }
 Write-Host ""
 
@@ -64,7 +64,7 @@ try {
 Write-Host ""
 
 Write-Host "=== Access URLs ===" -ForegroundColor Cyan
-Write-Host "Frontend:      http://localhost:5174" -ForegroundColor White
+Write-Host "Frontend:      http://localhost:5173" -ForegroundColor White
 Write-Host "Backend HTTP:  http://localhost:5000" -ForegroundColor White
 Write-Host "Backend HTTPS: https://localhost:5001" -ForegroundColor White
 Write-Host "Swagger UI:    http://localhost:5000/swagger" -ForegroundColor White
