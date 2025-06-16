@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* TODO: Add global styles and custom fonts */
+body {
+  /* Example: Set a background color that matches the Brawl Stars theme */
+  background-color: #0d1117; 
+  color: white;
+} 
