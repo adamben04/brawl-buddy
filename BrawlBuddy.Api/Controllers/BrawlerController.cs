@@ -9,11 +9,10 @@ namespace BrawlBuddy.Api.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 public class BrawlerController : ControllerBase
-{
-    private readonly BrawlApiService _brawlApiService;
+{    private readonly IBrawlApiService _brawlApiService;
     private readonly ILogger<BrawlerController> _logger;
 
-    public BrawlerController(BrawlApiService brawlApiService, ILogger<BrawlerController> logger)
+    public BrawlerController(IBrawlApiService brawlApiService, ILogger<BrawlerController> logger)
     {
         _brawlApiService = brawlApiService;
         _logger = logger;

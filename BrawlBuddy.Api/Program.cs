@@ -13,7 +13,7 @@ builder.Services.AddHttpClient();
 
 // Register custom services
 builder.Services.AddScoped<ICacheService, CacheService>();
-builder.Services.AddScoped<BrawlApiService>();
+builder.Services.AddScoped<IBrawlApiService, BrawlApiService>();
 
 // Add CORS
 builder.Services.AddCors(options =>
@@ -29,6 +29,11 @@ builder.Services.AddCors(options =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.WebHost.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.ListenLocalhost(5001); // Changed port from 5000 to 5001
+});
 
 var app = builder.Build();
 
@@ -48,4 +53,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run(); 
+app.Run();

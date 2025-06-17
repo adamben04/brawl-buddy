@@ -30,6 +30,7 @@ bld/
 .vscode/settings.json
 .vscode/tasks.json
 .vscode/launch.json
+.vscode/
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -613,3 +614,6 @@ out/
 *.key
 *.crt
 *.pem
+
+# Markdown files
+*.md

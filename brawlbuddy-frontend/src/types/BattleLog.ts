@@ -23,6 +23,8 @@ export interface Battle {
   trophyChange: number;
   starTokensGained: number;
   teams: BattlePlayer[][];
+  players?: BattlePlayer[]; // For solo modes
+  starPlayer?: BattlePlayer; // Optional star player
 }
 
 export interface BattlePlayer {

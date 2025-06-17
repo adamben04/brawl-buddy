@@ -18,13 +18,11 @@ public class CacheService : ICacheService
 {
     private readonly IMemoryCache _cache;
     private readonly ILogger<CacheService> _logger;
-    private readonly IConfiguration _configuration;
 
-    public CacheService(IMemoryCache cache, ILogger<CacheService> logger, IConfiguration configuration)
+    public CacheService(IMemoryCache cache, ILogger<CacheService> logger)
     {
         _cache = cache;
         _logger = logger;
-        _configuration = configuration;
     }
 
     public Task<T?> GetAsync<T>(string key)

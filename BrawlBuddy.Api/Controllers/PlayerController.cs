@@ -10,10 +10,10 @@ namespace BrawlBuddy.Api.Controllers;
 [Route("api/[controller]")]
 public class PlayerController : ControllerBase
 {
-    private readonly BrawlApiService _brawlApiService;
+    private readonly IBrawlApiService _brawlApiService; // Changed from BrawlApiService to IBrawlApiService
     private readonly ILogger<PlayerController> _logger;
 
-    public PlayerController(BrawlApiService brawlApiService, ILogger<PlayerController> logger)
+    public PlayerController(IBrawlApiService brawlApiService, ILogger<PlayerController> logger) // Changed parameter type
     {
         _brawlApiService = brawlApiService;
         _logger = logger;
@@ -37,6 +37,8 @@ public class PlayerController : ControllerBase
         try
         {
             _logger.LogInformation("Fetching player data for tag: {Tag}", tag);
+            _logger.LogInformation("Raw tag received: '{RawTag}'", tag);
+            _logger.LogInformation("Tag length: {Length}", tag.Length);
             
             var player = await _brawlApiService.GetPlayerAsync(tag);
             

@@ -19,6 +19,10 @@ public class Player
     public int BestTimeAsBigBrawler { get; set; }
     public PlayerClub? Club { get; set; }
     public List<PlayerBrawler> Brawlers { get; set; } = new();
+    
+    // Alternative property name mapping for the API response
+    [System.Text.Json.Serialization.JsonPropertyName("3vs3Victories")]
+    public int ThreeVsThreeVictories { get; set; }
 }
 
 public class PlayerIcon

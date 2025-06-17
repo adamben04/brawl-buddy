@@ -9,7 +9,7 @@ Your ultimate Brawl Stars companion! Brawl Buddy helps you track player statisti
 - **Brawler Information**: Complete database of all brawlers with stats and abilities
 - **Meta Insights**: Stay updated with current tier lists and meta trends
 - **Strategy Guides**: Map-specific strategies and tips
-- **Event Rotation Tracking**: Keep track of current and upcoming events
+- **Event Rotation Tracking**: Keep track of current and upcoming events from BrawlAPI
 
 ## 🛠️ Tech Stack
 

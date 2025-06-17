@@ -2,12 +2,19 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"label": "Start Frontend Dev Server",
-			"type": "shell",
-			"command": "npm run dev",
+			"args": [
+				"run",
+				"--urls=http://localhost:5001"
+			],
+			"command": "dotnet",
 			"group": "build",
 			"isBackground": true,
-			"problemMatcher": []
+			"label": "Start Brawl Buddy API",
+			"options": {
+				"cwd": "${workspaceFolder}/BrawlBuddy.Api"
+			},
+			"problemMatcher": [],
+			"type": "shell"
 		}
 	]
 }

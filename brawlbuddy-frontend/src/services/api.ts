@@ -2,10 +2,10 @@
 import axios from 'axios';
 import { Player } from '../types/Player';
 import { BattleLog } from '../types/BattleLog';
-import { Brawler } from '../types/Brawler';
+import { Brawler, AllBrawlersResponse } from '../types/Brawler';
 
 const api = axios.create({
-  baseURL: 'http://localhost:5000/api',
+  baseURL: 'http://localhost:5001/api',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -44,14 +44,14 @@ export const playerApi = {
 // Brawler API calls
 export const brawlerApi = {
   // Get all brawlers
-  getAllBrawlers: async (): Promise<{ brawlers: Brawler[]; count: number }> => {
-    const response = await api.get('/brawler');
-    return response.data as { brawlers: Brawler[]; count: number };
+  getAllBrawlers: async (): Promise<AllBrawlersResponse> => {
+    const response = await api.get('/brawler'); // Matches BrawlerController route
+    return response.data as AllBrawlersResponse;
   },
 
-  // Get specific brawler by ID
-  getBrawler: async (id: number): Promise<Brawler> => {
-    const response = await api.get(`/brawler/${id}`);
+  // Get a specific brawler by ID
+  getBrawlerById: async (id: number): Promise<Brawler> => {
+    const response = await api.get(`/brawler/${id}`); // Matches BrawlerController route
     return response.data as Brawler;
   },
 };
@@ -70,6 +70,37 @@ export const metaApi = {
     const response = await api.get('/meta/stats');
     return response.data;
   },
+
+  // Get current events
+  getEvents: async (): Promise<any> => {
+    const response = await api.get('/events');
+    return response.data;
+  },
+
+  // Get enhanced stats combining multiple data sources
+  getEnhancedStats: async (): Promise<any> => {
+    const response = await api.get('/meta/enhanced-stats');
+    return response.data;
+  },
+
+  // Get real win rates
+  getWinRates: async (mode?: string): Promise<any> => {
+    const params = mode ? `?mode=${encodeURIComponent(mode)}` : '';
+    const response = await api.get(`/meta/winrates${params}`);
+    return response.data;
+  },
+
+  // Get real pick rates
+  getPickRates: async (mode?: string): Promise<any> => {
+    const params = mode ? `?mode=${encodeURIComponent(mode)}` : '';
+    const response = await api.get(`/meta/pickrates${params}`);
+    return response.data;
+  },  // Get total unique brawler count
+  getBrawlerCount: async (): Promise<number> => {
+    const response = await api.get('/meta/brawlers/count');
+    const data = response.data as { count: number };
+    return data.count; // Extract the count from the response object
+  }
 };
 
 export default api;

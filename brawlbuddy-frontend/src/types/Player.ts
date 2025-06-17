@@ -24,6 +24,7 @@ export interface PlayerIcon {
 export interface PlayerClub {
   tag: string;
   name: string;
+  role?: string; // Optional since backend might not have this
 }
 
 export interface PlayerBrawler {
