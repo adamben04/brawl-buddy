@@ -7,7 +7,7 @@ import Home from './pages/Home'; // Ensure Home.tsx exports default
 import PlayerProfile from './pages/PlayerProfile';
 import TierListPage from './pages/TierListPage';
 import BattleLogPage from './pages/BattleLogPage';
-import BrawlersPage from './pages/BrawlersPage';
+import BrawlersPageNew from './pages/BrawlersPageNew'; // Use the new improved version with images
 import MapsPage from './pages/MapsPage';
 
 function App() {
@@ -33,34 +33,31 @@ function App() {
       <div className="min-h-screen bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900">        {/* Navigation Header */}
         <nav className="bg-black/20 backdrop-blur-sm border-b border-white/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between h-16">
-              <div className="flex items-center">
-                <Link to="/" className="text-white text-xl font-bold flex items-center gap-2">
+            <div className="flex items-center justify-between h-16">              <div className="flex items-center">
+                <Link to="/" className="text-white text-xl font-brawl-title flex items-center gap-2 text-shadow-brawl">
                   🥊 <span className="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">Brawl Buddy</span>
                 </Link>
               </div>
-              <div className="flex space-x-6">
-                <Link 
+              <div className="flex space-x-6">                <Link 
                   to="/" 
-                  className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                  className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-brawl-text transition-colors"
                 >
                   Stats
-                </Link>
-                <Link 
+                </Link>                <Link
                   to="/brawlers" 
-                  className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                  className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-brawl-text transition-colors"
                 >
                   Brawlers
                 </Link>
                 <Link 
                   to="/maps" 
-                  className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                  className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-brawl-text transition-colors"
                 >
                   Maps
                 </Link>
                 <Link 
                   to="/player" 
-                  className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                  className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-brawl-text transition-colors"
                 >
                   Profile
                 </Link>
@@ -90,7 +87,7 @@ function App() {
           )}
             <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/brawlers" element={<BrawlersPage />} />
+            <Route path="/brawlers" element={<BrawlersPageNew />} />
             <Route path="/maps" element={<MapsPage />} />
             <Route path="/player" element={<PlayerProfile />} />
             <Route path="/player/:tag" element={<PlayerProfile />} />

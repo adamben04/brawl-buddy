@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Font Test - Brawl Buddy</title>
+    <style>
+        @font-face {
+            font-family: 'Lilita One';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('https://fonts.gstatic.com/s/lilitaone/v13/i7dPIFZ9Zz-WBtRtedDbUEZ2RFq7AwU.woff2') format('woff2');
+        }
+
+        @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 900;
+            font-display: swap;
+            src: url('https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfBBc4AMP6lQ.woff2') format('woff2');
+        }
+
+        body {
+            background-color: rgba(30, 30, 30, 1);
+            color: #fff;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .font-test-title {
+            font-family: 'Lilita One', cursive;
+            font-size: 2rem;
+            color: #fff11e;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            margin-bottom: 20px;
+        }
+
+        .font-test-text {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 900;
+            font-size: 1.2rem;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+            margin-bottom: 15px;
+        }
+
+        .test-section {
+            border: 2px solid #444;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-section">
+        <h1 class="font-test-title">🥊 Brawl Buddy Font Test</h1>
+        <p class="font-test-text">This text uses Lilita One font (title font)</p>
+        <p class="font-test-text">This text uses Roboto Black font (text font)</p>
+        
+        <h2 style="font-family: 'Lilita One', cursive; color: #fe5e72;">Mythic Brawler</h2>
+        <p style="font-family: 'Roboto', sans-serif; font-weight: 900;">Edgar - High damage assassin that can leap great distances!</p>
+        
+        <h3 style="font-family: 'Lilita One', cursive; color: #5ab3ff;">Super Rare Brawler</h3>
+        <p style="font-family: 'Roboto', sans-serif; font-weight: 900;">Rico - Shoots bouncing bullets that deal more damage after each bounce!</p>
+    </div>
+    
+    <div class="test-section">
+        <p style="font-size: 0.9rem; color: #aaa;">
+            If the fonts above look different from default system fonts, then the custom fonts are loading correctly.
+            <br>Lilita One should look rounded and bold for titles.
+            <br>Roboto Black should look very thick and strong for text.
+        </p>
+    </div>
+</body>
+</html>

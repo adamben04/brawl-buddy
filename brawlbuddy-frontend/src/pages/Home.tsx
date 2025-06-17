@@ -61,7 +61,7 @@ const Home = () => {
     <div className="px-4 sm:px-0">
       {/* Hero */}
       <div className="text-center py-16 bg-gradient-to-r from-black/20 to-black/30 rounded-2xl mb-8">
-        <h1 className="text-6xl font-bold text-white mb-4">🥊 <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">Brawl Buddy</span></h1>
+        <h1 className="text-6xl font-brawl-title text-white mb-4 text-shadow-strong">🥊 <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">Brawl Buddy</span></h1>
         {brawlerCount !== -1 ? (
           <p className="text-white text-xl">Total Brawlers: {brawlerCount}</p>
         ) : (
@@ -70,22 +70,22 @@ const Home = () => {
       </div>
       {/* Daily Meta */}
       <section className="mb-8">
-        <h2 className="text-2xl font-bold text-white mb-4">📊 Daily Meta</h2>
+        <h2 className="text-2xl font-brawl-title text-white mb-4 text-shadow-brawl">📊 Daily Meta</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {dailyMeta.map((e, idx) => (
             <div key={idx} className="bg-white/10 p-4 rounded-lg">
-              <h3 className="text-white font-semibold">{e.map} ({e.mode})</h3>
+              <h3 className="text-white font-brawl-text">{e.map} ({e.mode})</h3>
             </div>
           ))}
         </div>
       </section>
       {/* Best Brawlers */}
       <section>
-        <h2 className="text-2xl font-bold text-white mb-4">🏆 Top Brawlers</h2>
+        <h2 className="text-2xl font-brawl-title text-white mb-4 text-shadow-brawl">🏆 Top Brawlers</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
           {topBrawlers.map((b, i) => (
             <div key={i} className="bg-white/10 p-4 rounded-lg">
-              <h3 className="text-white font-semibold">#{b.rank} {b.name}</h3>
+              <h3 className="text-white font-brawl-text">#{b.rank} {b.name}</h3>
             </div>
           ))}
         </div>

@@ -47,16 +47,13 @@ const BrawlersPage = () => {
   };
 
   return (
-    <div className="px-4 sm:px-0">
-      {/* Header */}
+    <div className="px-4 sm:px-0">      {/* Header */}
       <div className="text-center py-8">
-        <h1 className="text-4xl font-bold text-white mb-4">
-          🥊 <span className="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
-            All Brawlers
-          </span>
+        <h1 className="text-5xl font-brawl-title text-white mb-4 text-shadow-brawl">
+          🥊 <span className="text-yellow-400">ALL BRAWLERS</span>
         </h1>
-        <p className="text-lg text-gray-300 mb-6">
-          List of all brawlers in Brawl Stars. Check their stats and learn more about them.
+        <p className="text-xl font-brawl-text text-gray-300 mb-6 text-shadow-brawl">
+          Master every fighter in Brawl Stars! Check their stats and learn more about them.
         </p>
       </div>
 

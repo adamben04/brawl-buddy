@@ -1,10 +1,102 @@
+/* Brawl Stars Fonts - Essential CSS Only */
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* TODO: Add global styles and custom fonts */
+/* Brawl Stars Font Base Styling - Brawlify Style */
 body {
-  /* Example: Set a background color that matches the Brawl Stars theme */
-  background-color: #0d1117; 
+  font-family: "Lilita One", sans-serif;
+  font-size: 14px;
+  color: #fff;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1070px;
+  padding-left: 0;
+  padding-right: 0;
+  background-color: rgba(30, 30, 30, 1);
+}
+
+/* Brawl Stars Font Classes - Essential Only */
+.font-brawl-title {
+  font-family: "Lilita One", sans-serif !important;
+  font-weight: 400;
+  font-style: normal;
+  color: #fff !important;
+}
+
+.font-brawl-text {
+  font-family: "Lilita One", sans-serif !important;
+  font-weight: 400;
+  font-style: normal;
+  color: #fff !important;
+}
+
+/* Brawl Stars Rarity Colors */
+.rarity-common { color: #b9eaff; }
+.rarity-rare { color: #68fd58; }
+.rarity-super-rare { color: #5ab3ff; }
+.rarity-epic { color: #d850ff; }
+.rarity-mythic { color: #fe5e72; }
+.rarity-legendary { color: #fff11e; }
+.rarity-ultra-legendary { color: #f88f25; }
+
+/* Brawl Stars Background Colors */
+.bg-rarity-common { background-color: rgba(185, 234, 255, 0.2); }
+.bg-rarity-rare { background-color: rgba(104, 253, 88, 0.2); }
+.bg-rarity-super-rare { background-color: rgba(90, 179, 255, 0.2); }
+.bg-rarity-epic { background-color: rgba(216, 80, 255, 0.2); }
+.bg-rarity-mythic { background-color: rgba(254, 94, 114, 0.2); }
+.bg-rarity-legendary { background-color: rgba(255, 241, 30, 0.2); }
+.bg-rarity-ultra-legendary { background-color: rgba(248, 143, 37, 0.2); }
+
+/* Brawl Stars Image Styling */
+.brawler-image {
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  padding: 2px;
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.brawler-image:hover {
+  opacity: 0.8;
+}
+
+/* Essential Brawlify Style Effects */
+::selection {
+  background: #d85858;
+}
+
+/* Brawl Stars text shadow effects */
+.text-shadow-brawl {
+  text-shadow: 1px 1px 1px #000;
+}
+
+.text-shadow-strong {
+  text-shadow: 1px 2px 2px #000;
+}
+
+/* Essential Brawlify colors for text */
+.title-fit {
+  margin: 5px 10px;
+  text-shadow: 0px 1px black !important;
   color: white;
-} 
+}
+
+/* Force Lilita One font everywhere - Override Tailwind defaults */
+* {
+  font-family: "Lilita One", sans-serif !important;
+}
+
+/* Ensure text is always visible */
+h1, h2, h3, h4, h5, h6, p, span, div, button, a {
+  font-family: "Lilita One", sans-serif !important;
+  color: #fff !important;
+}
+
+/* Override gradient text issues */
+.text-transparent {
+  color: #fff !important;
+}

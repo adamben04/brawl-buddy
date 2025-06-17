@@ -124,7 +124,7 @@ const TierListPage = () => {
             {/* Error State */}
             {error && (
                 <div className="bg-red-900/50 border border-red-400 text-red-100 px-4 py-3 rounded mb-6">
-                    <strong className="font-bold">Error:</strong> {error}
+                    <strong className="font-brawl-title">Error:</strong> {error}
                 </div>
             )}
 

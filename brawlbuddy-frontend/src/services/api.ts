@@ -45,7 +45,11 @@ export const playerApi = {
 export const brawlerApi = {
   // Get all brawlers
   getAllBrawlers: async (): Promise<AllBrawlersResponse> => {
+    console.log('🌐 Making API call to /brawler...');
     const response = await api.get('/brawler'); // Matches BrawlerController route
+    console.log('📡 Raw API response:', response);
+    console.log('📊 Response data:', response.data);
+    console.log('📈 Response status:', response.status);
     return response.data as AllBrawlersResponse;
   },
 

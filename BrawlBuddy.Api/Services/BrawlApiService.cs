@@ -396,510 +396,115 @@ public class BrawlApiService : IBrawlApiService
         }
         // Don't convert to uppercase - Brawl Stars tags are case-sensitive
         return playerTag;
-    }
-
-    private static List<Brawler> GetMockBrawlers()
+    }    private static List<Brawler> GetMockBrawlers()
     {
-        // Adding ImageUrl, Rarity, and Class to mock brawlers for frontend development
-        // This assumes your Brawler model has these properties.
-        // You'll need to define these properties in your Models.Brawler class.
         return new List<Brawler>
         {
             new() {
                 Id = 16000000,
                 Name = "Shelly",
-                // Assuming Brawler model has these:
-                // ImageUrl = "https://cdn.brawlify.com/brawlers-bs/16000000.png", // Example URL
-                // Rarity = new BrawlerRarity { Name = "Common", Color = "#b9eaff" },
-                // Class = new BrawlerClass { Name = "Damage Dealer" },
+                Description = "Shelly's shotgun shreds enemies at close range.",
+                ImageUrl = $"https://cdn.brawlify.com/brawlers/borderless/16000000.png",
+                Rarity = new BrawlerRarity { Id = 1, Name = "Common", Color = "#b9eaff" },
+                Class = new BrawlerClass { Id = 1, Name = "Damage Dealer" },
                 StarPowers = new List<BrawlerStarPower> {
-                    new() { Id = 23000077, Name = "Shell Shock" },
-                    new() { Id = 23000078, Name = "Band-Aid" }
+                    new() { Id = 23000077, Name = "Shell Shock", Description = "Super shells slow down enemies for 3.0 seconds!" },
+                    new() { Id = 23000078, Name = "Band-Aid", Description = "When Shelly falls below 40% health, she instantly heals to 50% health. Band-Aid recharges in 20.0 seconds." }
                 },
                 Gadgets = new List<BrawlerGadget> {
-                    new() { Id = 23000188, Name = "Fast Forward" },
-                    new() { Id = 23000189, Name = "Clay Pigeons" }
+                    new() { Id = 23000188, Name = "Fast Forward", Description = "Shelly dashes forward, skipping a few steps!" },
+                    new() { Id = 23000189, Name = "Clay Pigeons", Description = "Shelly's next main attack deals +550 damage but has -33% range." }
                 }
             },
             new() {
                 Id = 16000001,
                 Name = "Colt",
-                // ImageUrl = "https://cdn.brawlify.com/brawlers-bs/16000001.png",
-                // Rarity = new BrawlerRarity { Name = "Common", Color = "#b9eaff" },
-                // Class = new BrawlerClass { Name = "Damage Dealer" },
-                StarPowers = new List<BrawlerStarPower> {
-                    new() { Id = 23000079, Name = "Slick Boots" },
-                    new() { Id = 23000080, Name = "Magnum Special" }
+                Description = "Colt fires an accurate burst of bullets from his dual revolvers.",
+                ImageUrl = $"https://cdn.brawlify.com/brawlers/borderless/16000001.png",
+                Rarity = new BrawlerRarity { Id = 1, Name = "Common", Color = "#b9eaff" },
+                Class = new BrawlerClass { Id = 1, Name = "Damage Dealer" },                StarPowers = new List<BrawlerStarPower> {
+                    new() { Id = 23000079, Name = "Slick Boots", Description = "Colt's movement speed is increased by 10%." },
+                    new() { Id = 23000080, Name = "Magnum Special", Description = "Colt's attack range and bullet speed are increased by 11%." }
                 },
                 Gadgets = new List<BrawlerGadget> {
-                    new() { Id = 23000190, Name = "Speedloader" },
-                    new() { Id = 23000191, Name = "Silver Bullet" }
+                    new() { Id = 23000190, Name = "Speedloader", Description = "Colt instantly reloads 2 ammo." },
+                    new() { Id = 23000191, Name = "Silver Bullet", Description = "Colt's next attack ignores walls and deals +1000 damage." }
                 }
             },
             new() { 
                 Id = 16000002, 
                 Name = "Bull", 
+                Description = "Bull deals massive damage up close with his shotgun.",
+                ImageUrl = $"https://cdn.brawlify.com/brawlers/borderless/16000002.png",
+                Rarity = new BrawlerRarity { Id = 1, Name = "Common", Color = "#b9eaff" },
+                Class = new BrawlerClass { Id = 2, Name = "Tank" },
                 StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000081, Name = "Berserker" },
-                    new() { Id = 23000082, Name = "Tough Guy" }
+                    new() { Id = 23000081, Name = "Berserker", Description = "When Bull falls below 60% health, his reload speed doubles." },
+                    new() { Id = 23000082, Name = "Tough Guy", Description = "When Bull falls below 40% health, he gains a shield that reduces all damage he takes by 30%." }
                 }, 
                 Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000192, Name = "T-Bone Injector" },
-                    new() { Id = 23000193, Name = "Stomper" }
+                    new() { Id = 23000192, Name = "T-Bone Injector", Description = "Bull instantly heals 1500 health." },
+                    new() { Id = 23000193, Name = "Stomper", Description = "Bull's next main attack has +1000 damage and destroys walls." }
                 } 
             },
             new() { 
                 Id = 16000003, 
                 Name = "Brock", 
-                StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000083, Name = "Incendiary" },
-                    new() { Id = 23000084, Name = "Rocket No. 4" }
+                Description = "Brock fires rockets that pack a punch!",
+                ImageUrl = $"https://cdn.brawlify.com/brawlers/borderless/16000003.png",
+                Rarity = new BrawlerRarity { Id = 2, Name = "Rare", Color = "#68fd58" },
+                Class = new BrawlerClass { Id = 1, Name = "Damage Dealer" },                StarPowers = new List<BrawlerStarPower> { 
+                    new() { Id = 23000083, Name = "Incendiary", Description = "Brock's attack sets the ground on fire for 2 seconds." },
+                    new() { Id = 23000084, Name = "Rocket No. 4", Description = "Brock's rocket splits into 4 smaller rockets when it hits a wall." }
                 }, 
                 Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000194, Name = "Rocket Laces" },
-                    new() { Id = 23000195, Name = "Rocket Fuel" }
+                    new() { Id = 23000194, Name = "Rocket Laces", Description = "Brock blasts himself into the air and over obstacles." },
+                    new() { Id = 23000195, Name = "Rocket Fuel", Description = "Brock's next attack has +1050 damage and +33% range." }
                 } 
             },
             new() { 
                 Id = 16000004, 
                 Name = "Rico", 
+                Description = "Rico's bullets bounce off walls!",
+                ImageUrl = $"https://cdn.brawlify.com/brawlers/borderless/16000004.png",
+                Rarity = new BrawlerRarity { Id = 3, Name = "Super Rare", Color = "#5ab7ff" },
+                Class = new BrawlerClass { Id = 1, Name = "Damage Dealer" },
                 StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000085, Name = "Super Bouncy" },
-                    new() { Id = 23000086, Name = "Robo Retreat" }
+                    new() { Id = 23000085, Name = "Super Bouncy", Description = "Rico's bullets gain +80 damage after bouncing off a wall." },
+                    new() { Id = 23000086, Name = "Robo Retreat", Description = "When Rico falls below 40% health, his movement speed increases by 34%." }
                 }, 
                 Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000196, Name = "Multiball Launcher" },
-                    new() { Id = 23000197, Name = "Bouncy Castle" }
+                    new() { Id = 23000196, Name = "Multiball Launcher", Description = "Rico's next attack splits into 5 bullets in a cone pattern." },
+                    new() { Id = 23000197, Name = "Bouncy Castle", Description = "Rico bounces around, becoming immune to damage for 0.6 seconds." }
                 } 
-            },
-            new() { 
+            },            new() { 
                 Id = 16000005, 
                 Name = "Spike", 
-                StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000087, Name = "Fertilize" },
-                    new() { Id = 23000088, Name = "Curveball" }
+                Description = "Spike throws cactus grenades that explode and shoot spikes in all directions!",
+                ImageUrl = $"https://cdn.brawlify.com/brawlers/borderless/16000005.png",
+                Rarity = new BrawlerRarity { Id = 5, Name = "Legendary", Color = "#fff063" },
+                Class = new BrawlerClass { Id = 1, Name = "Damage Dealer" },                StarPowers = new List<BrawlerStarPower> { 
+                    new() { Id = 23000087, Name = "Fertilize", Description = "Spike's Super heals him and his teammates who are in its area of effect." },
+                    new() { Id = 23000088, Name = "Curveball", Description = "Spike's attack spikes curve around walls and other obstacles." }
                 }, 
                 Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000198, Name = "Popping Pincushion" },
-                    new() { Id = 23000199, Name = "Life Plant" }
-                } 
+                    new() { Id = 23000198, Name = "Popping Pincushion", Description = "Spike instantly breaks apart and shoots spikes in all directions." },
+                    new() { Id = 23000199, Name = "Life Plant", Description = "Spike throws a cactus that heals him and teammates." }                } 
             },
             new() { 
-                Id = 16000006, 
-                Name = "Barley", 
+                Id = 16000094, 
+                Name = "Kaze", 
+                Description = "Kaze is a mysterious Ultra Legendary brawler with wind powers!",
+                ImageUrl = $"https://cdn.brawlify.com/brawlers/borderless/16000094.png",
+                Rarity = new BrawlerRarity { Id = 7, Name = "Ultra Legendary", Color = "#ff6b35" },
+                Class = new BrawlerClass { Id = 3, Name = "Assassin" },
                 StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000089, Name = "Medical Use" },
-                    new() { Id = 23000090, Name = "Extra Noxious" }
+                    new() { Id = 23000300, Name = "Wind Walker", Description = "Kaze gains increased movement speed after using his Super." },
+                    new() { Id = 23000301, Name = "Storm Strike", Description = "Kaze's attacks create wind currents that deal extra damage." }
                 }, 
                 Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000200, Name = "Sticky Syrup Mixer" },
-                    new() { Id = 23000201, Name = "Herbal Tonic" }
-                } 
-            },
-            new() { 
-                Id = 16000007, 
-                Name = "Jessie", 
-                StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000091, Name = "Energize" },
-                    new() { Id = 23000092, Name = "Shocky" }
-                }, 
-                Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000202, Name = "Spark Plug" },
-                    new() { Id = 23000203, Name = "Recoil Spring" }
-                } 
-            },
-            new() { 
-                Id = 16000008, 
-                Name = "Nita", 
-                StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000093, Name = "Bear With Me" },
-                    new() { Id = 23000094, Name = "Hyper Bear" }
-                }, 
-                Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000204, Name = "Bear Paws" },
-                    new() { Id = 23000205, Name = "Faux Fur" }
-                } 
-            },
-            new() { 
-                Id = 16000009, 
-                Name = "Dynamike", 
-                StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000095, Name = "Dyna-Jump" },
-                    new() { Id = 23000096, Name = "Demolition" }
-                }, 
-                Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000206, Name = "Fidget Spinner" },
-                    new() { Id = 23000207, Name = "Satchel Charge" }
-                } 
-            },
-            new() { 
-                Id = 16000010, 
-                Name = "El Primo", 
-                StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000097, Name = "El Fuego" },
-                    new() { Id = 23000098, Name = "Meteor Rush" }
-                }, 
-                Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000208, Name = "Suplex Supplement" },
-                    new() { Id = 23000209, Name = "Asteroid Belt" }
-                } 
-            },
-            new() { 
-                Id = 16000011, 
-                Name = "Mortis", 
-                StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000099, Name = "Creepy Harvest" },
-                    new() { Id = 23000100, Name = "Coiled Snake" }
-                }, 
-                Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000210, Name = "Combo Spinner" },
-                    new() { Id = 23000211, Name = "Survival Shovel" }
-                } 
-            },
-            new() { 
-                Id = 16000012, 
-                Name = "Crow", 
-                StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000101, Name = "Extra Toxic" },
-                    new() { Id = 23000102, Name = "Carrion Crow" }
-                }, 
-                Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000212, Name = "Defense Booster" },
-                    new() { Id = 23000213, Name = "Slowing Toxin" }
-                } 
-            },
-            new() { 
-                Id = 16000013, 
-                Name = "Poco", 
-                StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000103, Name = "Da Capo!" },
-                    new() { Id = 23000104, Name = "Screeching Solo" }
-                }, 
-                Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000214, Name = "Tuning Fork" },
-                    new() { Id = 23000215, Name = "Protective Tunes" }
-                } 
-            },
-            new() { 
-                Id = 16000014, 
-                Name = "Bo", 
-                StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000105, Name = "Circling Eagle" },
-                    new() { Id = 23000106, Name = "Snare a Bear" }
-                }, 
-                Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000216, Name = "Super Totem" },
-                    new() { Id = 23000217, Name = "Tripwire" }
-                } 
-            },
-            
-            // Rare Brawlers
-            new() { 
-                Id = 16000015, 
-                Name = "Piper", 
-                StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000107, Name = "Ambush" },
-                    new() { Id = 23000108, Name = "Snappy Sniping" }
-                }, 
-                Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000218, Name = "Auto Aimer" },
-                    new() { Id = 23000219, Name = "Homemade Recipe" }
-                } 
-            },
-            new() { 
-                Id = 16000016, 
-                Name = "Pam", 
-                StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000109, Name = "Mama's Hug" },
-                    new() { Id = 23000110, Name = "Mama's Squeeze" }
-                }, 
-                Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000220, Name = "Pulse Modulator" },
-                    new() { Id = 23000221, Name = "Scrapsucker" }
-                } 
-            },
-            new() { 
-                Id = 16000017, 
-                Name = "Frank", 
-                StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000111, Name = "Power Grab" },
-                    new() { Id = 23000112, Name = "Sponge" }
-                }, 
-                Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000222, Name = "Active Noise Canceling" },
-                    new() { Id = 23000223, Name = "Irresistible Attraction" }
-                } 
-            },
-            new() { 
-                Id = 16000018, 
-                Name = "Bibi", 
-                StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000113, Name = "Home Run" },
-                    new() { Id = 23000114, Name = "Batting Stance" }
-                }, 
-                Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000224, Name = "Vitamin Booster" },
-                    new() { Id = 23000225, Name = "Extra Sticky" }
-                } 
-            },
-            new() { 
-                Id = 16000019, 
-                Name = "Bea", 
-                StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000115, Name = "Insta Beeload" },
-                    new() { Id = 23000116, Name = "Honey Coat" }
-                }, 
-                Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000226, Name = "Honey Molasses" },
-                    new() { Id = 23000227, Name = "Rattled Hive" }
-                } 
-            },
-            
-            // Super Rare Brawlers  
-            new() { 
-                Id = 16000020, 
-                Name = "Darryl", 
-                StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000117, Name = "Steel Hoops" },
-                    new() { Id = 23000118, Name = "Rolling Reload" }
-                }, 
-                Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000228, Name = "Recoiling Rotator" },
-                    new() { Id = 23000229, Name = "Tar Barrel" }
-                } 
-            },
-            new() { 
-                Id = 16000021, 
-                Name = "Penny", 
-                StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000119, Name = "Last Blast" },
-                    new() { Id = 23000120, Name = "Balls of Fire" }
-                }, 
-                Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000230, Name = "Salty Barrel" },
-                    new() { Id = 23000231, Name = "Captain's Compass" }
-                } 
-            },
-            new() { 
-                Id = 16000022, 
-                Name = "Carl", 
-                StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000121, Name = "Power Throw" },
-                    new() { Id = 23000122, Name = "Protective Pirouette" }
-                }, 
-                Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000232, Name = "Heat Ejector" },
-                    new() { Id = 23000233, Name = "Flying Hook" }
-                } 
-            },
-            new() { 
-                Id = 16000023, 
-                Name = "Jacky", 
-                StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000123, Name = "Counter Crush" },
-                    new() { Id = 23000124, Name = "Hardy Hard Hat" }
-                }, 
-                Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000234, Name = "Pneumatic Booster" },
-                    new() { Id = 23000235, Name = "Rebuild" }
-                } 
-            },
-            new() { 
-                Id = 16000024, 
-                Name = "Gus", 
-                StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000125, Name = "Spirit Animal" },
-                    new() { Id = 23000126, Name = "Health Bonanza" }
-                }, 
-                Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000236, Name = "Kooky Popper" },
-                    new() { Id = 23000237, Name = "Soul Switcher" }
-                } 
-            },
-            
-            // Epic Brawlers
-            new() { 
-                Id = 16000025, 
-                Name = "Rosa", 
-                StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000127, Name = "Plant Life" },
-                    new() { Id = 23000128, Name = "Thorny Gloves" }
-                }, 
-                Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000238, Name = "Grow Light" },
-                    new() { Id = 23000239, Name = "Unfriendly Bushes" }
-                } 
-            },
-            new() { 
-                Id = 16000026, 
-                Name = "Griff", 
-                StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000129, Name = "Keep the Change" },
-                    new() { Id = 23000130, Name = "Business Resilience" }
-                }, 
-                Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000240, Name = "Piggy Bank" },
-                    new() { Id = 23000241, Name = "Coin Shower" }
-                } 
-            },
-            new() { 
-                Id = 16000027, 
-                Name = "Bonnie", 
-                StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000131, Name = "Black Powder" },
-                    new() { Id = 23000132, Name = "Wisdom Tooth" }
-                }, 
-                Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000242, Name = "Sugar Rush" },
-                    new() { Id = 23000243, Name = "Crash Test" }
-                } 
-            },
-            new() { 
-                Id = 16000028, 
-                Name = "Grom", 
-                StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000133, Name = "Foot Patrol" },
-                    new() { Id = 23000134, Name = "X-Factor" }
-                }, 
-                Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000244, Name = "Watchtower" },
-                    new() { Id = 23000245, Name = "Radio Check" }
-                } 
-            },
-            new() { 
-                Id = 16000029, 
-                Name = "Ash", 
-                StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000135, Name = "First Bash" },
-                    new() { Id = 23000136, Name = "Mad as Heck" }
-                }, 
-                Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000246, Name = "Chill Pill" },
-                    new() { Id = 23000247, Name = "Rotten Banana" }
-                } 
-            },
-
-            // Mythic Brawlers
-            new() { 
-                Id = 16000030, 
-                Name = "Tara", 
-                StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000137, Name = "Black Portal" },
-                    new() { Id = 23000138, Name = "Healing Shade" }
-                }, 
-                Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000248, Name = "Psychic Enhancer" },
-                    new() { Id = 23000249, Name = "Support from Beyond" }
-                } 
-            },
-            new() { 
-                Id = 16000031, 
-                Name = "Gene", 
-                StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000139, Name = "Magic Puffs" },
-                    new() { Id = 23000140, Name = "Spirit Slap" }
-                }, 
-                Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000250, Name = "Lamp Blowout" },
-                    new() { Id = 23000251, Name = "Vengeful Spirits" }
-                } 
-            },
-            new() { 
-                Id = 16000032, 
-                Name = "Max", 
-                StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000141, Name = "Super Charged" },
-                    new() { Id = 23000142, Name = "Run n Gun" }
-                }, 
-                Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000252, Name = "Phase Shifter" },
-                    new() { Id = 23000253, Name = "Sneaky Sneakers" }
-                } 
-            },
-            new() { 
-                Id = 16000033, 
-                Name = "Mr. P", 
-                StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000143, Name = "Handle With Care" },
-                    new() { Id = 23000144, Name = "Revolving Door" }
-                }, 
-                Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000254, Name = "Service Bell" },
-                    new() { Id = 23000255, Name = "Porter Reinforcements" }
-                } 
-            },
-            new() { 
-                Id = 16000034, 
-                Name = "Sprout", 
-                StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000145, Name = "Overgrowth" },
-                    new() { Id = 23000146, Name = "Photosynthesis" }
-                }, 
-                Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000256, Name = "Garden Mulcher" },
-                    new() { Id = 23000257, Name = "Transplant" }
-                } 
-            },
-
-            // Legendary Brawlers
-            new() { 
-                Id = 16000035, 
-                Name = "Leon", 
-                StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000147, Name = "Smoke Trails" },
-                    new() { Id = 23000148, Name = "Invisiheal" }
-                }, 
-                Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000258, Name = "Clone Projector" },
-                    new() { Id = 23000259, Name = "Lollipop Drop" }
-                } 
-            },
-            new() { 
-                Id = 16000036, 
-                Name = "Sandy", 
-                StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000149, Name = "Rude Sands" },
-                    new() { Id = 23000150, Name = "Healing Winds" }
-                }, 
-                Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000260, Name = "Sleep Stimulator" },
-                    new() { Id = 23000261, Name = "Sweet Dreams" }
-                } 
-            },
-            new() { 
-                Id = 16000037, 
-                Name = "Amber", 
-                StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000151, Name = "Wild Flames" },
-                    new() { Id = 23000152, Name = "Scorchin' Siphon" }
-                }, 
-                Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000262, Name = "Fire Starters" },
-                    new() { Id = 23000263, Name = "Dancing Flames" }
-                } 
-            },
-            new() { 
-                Id = 16000038, 
-                Name = "Meg", 
-                StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000153, Name = "Force Field" },
-                    new() { Id = 23000154, Name = "Self Destruction" }
-                }, 
-                Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000264, Name = "Jolting Volts" },
-                    new() { Id = 23000265, Name = "Toolbox" }
-                } 
-            },
-            new() { 
-                Id = 16000039, 
-                Name = "Chester", 
-                StarPowers = new List<BrawlerStarPower> { 
-                    new() { Id = 23000155, Name = "Bell O'Mania" },
-                    new() { Id = 23000156, Name = "Spicy Dice" }
-                }, 
-                Gadgets = new List<BrawlerGadget> { 
-                    new() { Id = 23000266, Name = "Candy Beans" },
-                    new() { Id = 23000267, Name = "Pop Rocks" }
+                    new() { Id = 23000400, Name = "Gust Shield", Description = "Kaze creates a protective wind barrier." },
+                    new() { Id = 23000401, Name = "Whirlwind Dash", Description = "Kaze dashes through enemies, dealing damage." }
                 } 
             }
         };

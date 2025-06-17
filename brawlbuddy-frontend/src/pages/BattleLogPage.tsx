@@ -62,9 +62,9 @@ const BattleLogPage = () => {
 
     const getResultColor = (result: string) => {
         switch (result.toLowerCase()) {
-            case 'victory': return 'text-green-400';
-            case 'defeat': return 'text-red-400';
-            case 'draw': return 'text-yellow-400';
+            case 'victory': return 'font-brawl-text text-green-400';
+            case 'defeat': return 'font-brawl-text text-red-400';
+            case 'draw': return 'font-brawl-text text-yellow-400';
             default: return 'text-gray-400';
         }
     };

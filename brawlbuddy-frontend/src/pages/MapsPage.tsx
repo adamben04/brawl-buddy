@@ -105,47 +105,42 @@ const MapsPage = () => {
 
   const getModeColor = (mode: string) => {
     switch (mode) {
-      case 'Gem Grab': return 'bg-green-500/20 text-green-400';
-      case 'Heist': return 'bg-yellow-500/20 text-yellow-400';
-      case 'Bounty': return 'bg-blue-500/20 text-blue-400';
-      case 'Brawl Ball': return 'bg-orange-500/20 text-orange-400';
-      case 'Solo Showdown': return 'bg-red-500/20 text-red-400';
-      case 'Duo Showdown': return 'bg-purple-500/20 text-purple-400';
-      case 'Hot Zone': return 'bg-pink-500/20 text-pink-400';
-      case 'Knockout': return 'bg-gray-500/20 text-gray-400';
-      default: return 'bg-gray-500/20 text-gray-400';
+      case 'Gem Grab': return 'font-brawl-text bg-green-500/20 text-green-400';
+      case 'Heist': return 'font-brawl-text bg-yellow-500/20 text-yellow-400';
+      case 'Bounty': return 'font-brawl-text bg-blue-500/20 text-blue-400';
+      case 'Brawl Ball': return 'font-brawl-text bg-orange-500/20 text-orange-400';
+      case 'Solo Showdown': return 'font-brawl-text bg-red-500/20 text-red-400';
+      case 'Duo Showdown': return 'font-brawl-text bg-purple-500/20 text-purple-400';
+      case 'Hot Zone': return 'font-brawl-text bg-pink-500/20 text-pink-400';
+      case 'Knockout': return 'font-brawl-text bg-gray-500/20 text-gray-400';
+      default: return 'font-brawl-text bg-gray-500/20 text-gray-400';
     }
   };
 
   return (
-    <div className="px-4 sm:px-0">
-      {/* Header */}
+    <div className="px-4 sm:px-0">      {/* Header */}
       <div className="text-center py-8">
-        <h1 className="text-4xl font-bold text-white mb-4">
-          🗺️ <span className="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
-            All Maps
-          </span>
+        <h1 className="text-5xl font-brawl-title text-white mb-4 text-shadow-brawl">
+          🗺️ <span className="text-yellow-400">ALL MAPS</span>
         </h1>
-        <p className="text-lg text-gray-300 mb-6">
-          List of all maps sorted by game modes. Click on a map to check its data for best brawlers.
+        <p className="text-xl font-brawl-text text-gray-300 mb-6 text-shadow-brawl">
+          Discover every battlefield in Brawl Stars! Find the best maps for your favorite brawlers and dominate the competition.
         </p>
-      </div>
-
-      {/* Mode Filter */}
+      </div>      {/* Mode Filter */}
       <div className="flex flex-wrap gap-2 mb-8 justify-center">
-        <span className="text-white font-medium mr-4">Game Mode:</span>
+        <span className="font-brawl-title text-white text-lg mr-4 text-shadow-brawl">🎮 GAME MODE:</span>
         {gameModes.map(mode => (
           <button
             key={mode}
             onClick={() => setSelectedMode(mode)}
-            className={`px-4 py-2 rounded-full text-sm transition-all flex items-center gap-2 ${
+            className={`px-4 py-2 rounded-full text-sm font-brawl-text transition-all flex items-center gap-2 text-shadow-brawl ${
               selectedMode === mode
-                ? 'bg-yellow-500 text-black font-medium'
+                ? 'bg-yellow-500 text-black font-brawl-title'
                 : 'bg-white/10 text-gray-300 hover:bg-white/20'
             }`}
           >
             {mode !== 'All' && getModeIcon(mode)}
-            {mode}
+            {mode.toUpperCase()}
             {mode !== 'All' && (
               <span className="text-xs opacity-75">
                 ({mapsByMode[mode]?.length || 0})
@@ -153,24 +148,21 @@ const MapsPage = () => {
             )}
           </button>
         ))}
-      </div>
-
-      {/* Loading */}
+      </div>      {/* Loading */}
       {loading && (
         <div className="text-center py-12">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-yellow-400 mx-auto mb-4"></div>
-          <div className="text-white text-lg">Loading maps...</div>
+          <div className="font-brawl-title text-white text-xl text-shadow-brawl">⚡ LOADING BATTLE MAPS...</div>
         </div>
       )}
 
       {/* Maps by Mode */}
       {!loading && Object.keys(mapsByMode).map(mode => (
-        <div key={mode} className="mb-12">
-          <div className="flex items-center gap-3 mb-6">
-            <div className={`px-3 py-1 rounded-full text-sm font-medium ${getModeColor(mode)}`}>
+        <div key={mode} className="mb-12">          <div className="flex items-center gap-3 mb-6">
+            <div className={`px-3 py-1 rounded-full text-sm font-brawl-title ${getModeColor(mode)}`}>
               {getModeIcon(mode)} {mode.toUpperCase()}
             </div>
-            <span className="text-gray-400">({mapsByMode[mode].length} maps)</span>
+            <span className="font-brawl-text text-gray-400">({mapsByMode[mode].length} battlefields)</span>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
@@ -183,50 +175,48 @@ const MapsPage = () => {
                 <div className="w-full h-32 bg-gradient-to-br from-gray-600 to-gray-800 rounded-lg mb-3 flex items-center justify-center text-4xl group-hover:scale-105 transition-transform">
                   {getModeIcon(map.mode)}
                 </div>
-                
-                {/* Map Name */}
-                <h3 className="text-white font-semibold mb-2">{map.name}</h3>
+                  {/* Map Name */}
+                <h3 className="font-brawl-title text-white text-lg mb-2 text-shadow-brawl">{map.name}</h3>
                 
                 {/* Mode Badge */}
-                <div className={`inline-block px-2 py-1 rounded-full text-xs mb-2 ${getModeColor(map.mode)}`}>
-                  {map.mode}
+                <div className={`inline-block px-2 py-1 rounded-full text-xs mb-2 font-brawl-text ${getModeColor(map.mode)}`}>
+                  {map.mode.toUpperCase()}
                 </div>
                 
                 {/* Battle Count */}
                 {map.battleCount && (
-                  <div className="text-xs text-gray-400">
-                    {map.battleCount.toLocaleString()} battles
+                  <div className="text-sm font-brawl-text text-gray-400">
+                    ⚔️ {map.battleCount.toLocaleString()} battles
                   </div>
                 )}
                 
                 {/* Coming Soon indicator */}
-                <div className="mt-2 text-xs text-yellow-400">
-                  📊 Stats coming soon
+                <div className="mt-2 text-sm font-brawl-text text-yellow-400 text-shadow-brawl">
+                  📊 STATS COMING SOON
                 </div>
               </div>
             ))}
           </div>
         </div>
-      ))}
-
-      {/* No Results */}
+      ))}      {/* No Results */}
       {!loading && Object.keys(mapsByMode).length === 0 && (
         <div className="text-center py-12">
-          <div className="text-gray-400 text-lg">No maps found for the selected mode.</div>
+          <div className="font-brawl-title text-gray-400 text-xl text-shadow-brawl">🚫 NO BATTLEFIELDS FOUND</div>
+          <p className="font-brawl-text text-gray-500 mt-2">Try selecting a different game mode!</p>
         </div>
       )}
 
       {/* Shortcuts Section */}
       <div className="mt-12 bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-        <h3 className="text-white font-semibold mb-4">Quick Navigation</h3>
+        <h3 className="font-brawl-title text-white text-xl mb-4 text-shadow-brawl">🚀 QUICK NAVIGATION</h3>
         <div className="flex flex-wrap gap-2">
           {gameModes.slice(1).map(mode => (
             <button
               key={mode}
               onClick={() => setSelectedMode(mode)}
-              className="px-3 py-1 rounded-full text-sm bg-white/10 text-gray-300 hover:bg-white/20 transition-all"
+              className="px-3 py-1 rounded-full text-sm font-brawl-text bg-white/10 text-gray-300 hover:bg-white/20 transition-all"
             >
-              {getModeIcon(mode)} {mode} ({mapsByMode[mode]?.length || 0})
+              {getModeIcon(mode)} {mode.toUpperCase()} ({mapsByMode[mode]?.length || 0})
             </button>
           ))}
         </div>

@@ -294,7 +294,3 @@ export class BrawlifyService {
     return throwError(() => new Error(error.message || 'Server error'));
   }
 }
-    console.error('API Error:', error); // Log the error for debugging
-    return throwError(() => new Error(error.message || 'Server error'));
-  }
-}

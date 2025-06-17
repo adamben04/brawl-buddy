@@ -616,4 +616,9 @@ out/
 *.pem
 
 # Markdown files
+# Exclude README.md from ignore so it is tracked in git
 *.md
+!README.md
+
+# Ignore test scripts
+*.ps1

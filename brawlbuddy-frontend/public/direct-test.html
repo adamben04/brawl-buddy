@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Direct Brawlify Image Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #1a1a1a;
+            color: white;
+        }
+        .image-container {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #444;
+            border-radius: 8px;
+            text-align: center;
+        }
+        img {
+            width: 68px;
+            height: 68px;
+            border: 2px solid #666;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Direct Brawlify Image Test</h1>
+    <p>Testing real Brawlify CDN URLs from the API response:</p>
+    
+    <div class="image-container">
+        <img src="https://cdn.brawlify.com/brawlers/borders/16000094.png" alt="Kaze" onload="console.log('✅ Kaze loaded')" onerror="console.log('❌ Kaze failed')">
+        <br>Kaze (16000094)
+    </div>
+    
+    <div class="image-container">
+        <img src="https://cdn.brawlify.com/brawlers/borders/16000000.png" alt="Shelly" onload="console.log('✅ Shelly loaded')" onerror="console.log('❌ Shelly failed')">
+        <br>Shelly (16000000)
+    </div>
+    
+    <div class="image-container">
+        <img src="https://cdn.brawlify.com/brawlers/borders/16000001.png" alt="Colt" onload="console.log('✅ Colt loaded')" onerror="console.log('❌ Colt failed')">
+        <br>Colt (16000001)
+    </div>
+
+    <div class="image-container">
+        <img src="https://cdn.brawlify.com/brawlers/borderless/16000094.png" alt="Kaze Borderless" onload="console.log('✅ Kaze borderless loaded')" onerror="console.log('❌ Kaze borderless failed')">
+        <br>Kaze Borderless (16000094)
+    </div>
+
+    <div class="image-container">
+        <img src="https://cdn.brawlify.com/brawlers/borderless/16000000.png" alt="Shelly Borderless" onload="console.log('✅ Shelly borderless loaded')" onerror="console.log('❌ Shelly borderless failed')">
+        <br>Shelly Borderless (16000000)
+    </div>
+
+    <script>
+        console.log('🧪 Testing direct Brawlify CDN image loading...');
+        
+        // Test fetch access to images
+        const testUrls = [
+            'https://cdn.brawlify.com/brawlers/borders/16000094.png',
+            'https://cdn.brawlify.com/brawlers/borders/16000000.png',
+            'https://cdn.brawlify.com/brawlers/borderless/16000094.png',
+            'https://cdn.brawlify.com/brawlers/borderless/16000000.png'
+        ];
+        
+        testUrls.forEach(url => {
+            fetch(url, { method: 'HEAD' })
+                .then(response => {
+                    console.log(`✅ ${url} - Status: ${response.status}`);
+                })
+                .catch(error => {
+                    console.error(`❌ ${url} - Error:`, error.message);
+                });
+        });
+    </script>
+</body>
+</html>
